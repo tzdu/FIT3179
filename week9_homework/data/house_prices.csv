@@ -1,9 +1,9 @@
-﻿State,Price,Population
-New South Wales,1207.9,8434.8
-Victoria,920.7,6906
-Queensland,830.7,5528.3
-South Australia,738.9,1866.3
-Western Australia,733.5,2927.9
-Tasmania,660.2,574.7
-Northern Territory,507.3,253.6
-Australian Capital Territory,946.6,470.2
+﻿State,Price,Population,Weekly Wages
+New South Wales,1207.9,8434.8,"1,935.70"
+Victoria,920.7,6906,"1,882.00"
+Queensland,830.7,5528.3,"1,901.00"
+South Australia,738.9,1866.3,"1,776.90"
+Western Australia,733.5,2927.9,"2,094.30"
+Tasmania,660.2,574.7,"1,710.80"
+Northern Territory,507.3,253.6,"1,845.80"
+Australian Capital Territory,946.6,470.2,"2,126.50"
