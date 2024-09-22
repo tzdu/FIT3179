@@ -1,9 +1,9 @@
-﻿State,Price
-New South Wales,1207.9
-Victoria,920.7
-Queensland,830.7
-South Australia,738.9
-Western Australia,733.5
-Tasmania,660.2
-Northern Territory,507.3
-Australian Capital Territory,946.6
+﻿State,Price,Population
+New South Wales,1207.9,8434.8
+Victoria,920.7,6906
+Queensland,830.7,5528.3
+South Australia,738.9,1866.3
+Western Australia,733.5,2927.9
+Tasmania,660.2,574.7
+Northern Territory,507.3,253.6
+Australian Capital Territory,946.6,470.2
