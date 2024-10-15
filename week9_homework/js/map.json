@@ -1,4 +1,5 @@
-"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Median House Prices As a Proportion of Weekly Wages for States in Australia (Dec '23)",
     "width": 800,
     "height": 400,
@@ -37,3 +38,4 @@
         {"field": "Proportion", "type": "quantitative"}
       ]
     }
+}
