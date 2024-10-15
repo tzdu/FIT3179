@@ -11,14 +11,30 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
   
-  <script src="vega_lite_vis.js"></script>
   
   <title>First Vega-Lite graph </title>
 </head>
   
 <body>
-  <h1>First Vega-Lite graph (TEST) fhskjfhakjds</h1>
-  <div id="bar_chart">
+  <h1>First Vega-Lite graph (TEST)</h1>
+  <div id="bar_chart"/>
+    <script>
+      const spec2 = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Cheapest European Cities" },
+    "data": {
+      "url": "https://raw.githubusercontent.com/FIT3179/Datasets/main/city_daily_cost.csv"
+    },
+    "mark": "bar",
+    "encoding": {
+      "x": { "field": "daily_cost", "type": "quantitative" },
+      "y": { "field": "city", "type": "nominal" }
+    },
+      "config": {}
+  };
+      vegaEmbed("#bar_chart", spec2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+    </script>
+  
   </div>
 </body>
   
