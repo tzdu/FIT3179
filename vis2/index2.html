@@ -87,7 +87,7 @@
           "min": 0.06,
           "max": 0.085,
           "step": 0.005,
-          "name": "Proportion: "
+          "name": "Maximum Proportion: "
         }
       }
   ],
@@ -227,10 +227,23 @@
           ],
         "name": "State Selection: "
         }
+      },
+      {
+        "name": "Wages_below",
+        "value": 2200,
+        "bind": {
+          "input": "range",
+          "min": 1700,
+          "max": 2200,
+          "step": 100,
+          "name": "Maximum Wages: "
+        }
       }
+  
     ],
     "transform": [
-    {"filter": "State_selection == null || datum.State == State_selection"}
+    {"filter": "State_selection == null || datum.State == State_selection"},
+    {"filter": "datum.WeeklyWages <= Wages_below"}
     ],
   
     "mark": "circle",
