@@ -105,19 +105,24 @@
     vegaEmbed("#map", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
   </script>
 
-  <!--  BAR CHART -->
+  <!--  LINE CHART -->
   <script>
     const spec2 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Cheapest European Cities" },
-    "width": "container",
-    "data": {
-      "url": "https://raw.githubusercontent.com/FIT3179/Datasets/main/city_daily_cost.csv"
+    "title": "CPI Index Numbers of each State Over 10 Years",
+    "description": "Stock prices of 5 Tech Companies over Time.",
+    "data": {"url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/data/line_chart.csv"},
+    "mark": {
+      "type": "line",
+      "point": true
     },
-    "mark": "bar",
     "encoding": {
-      "x": { "field": "daily_cost", "type": "quantitative" },
-      "y": { "field": "city", "type": "nominal" }
+      "x": {"field": "Year"},
+      "y": {"field": "Index", "type": "quantitative",
+        "scale": {
+          "domain": [100, 140]
+        }},
+      "color": {"field": "State", "type": "nominal"}
     },
       "config": {}
   };
