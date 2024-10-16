@@ -24,12 +24,27 @@
     <!-- pure grid group -->
     <div class="pure-g">
       <div class="pure-u-1-1">
-        <h1>Data Visualisation 2</h1>
+        <h1>Cost of Living in Australia</h1>
         <p>Write your domain and stuff here</p>
       </div>
     </div>
     <!-- end pure grid group -->
-
+    
+    <h2>Cost of Living in Different States</h2>
+    <p>
+      The analysis of the CPI-to-Wage Ratio across Australian states reveals important insights into the cost of living and purchasing 
+      power of residents. This ratio allows for comparison of the cost of living, as represented by the Consumer Price Index (CPI) across
+      different states. A lower ratio suggests that wages are higher relative to the cost of living, indicating better financial comfort 
+      for residents. Western Australia (WA) has the lowest CPI-to-Wage Ratio at 0.066, reflecting higher wages relative to living costs, 
+      likely due to high-paying industries such as mining. In contrast, South Australia (SA) shows the highest ratio at 0.079, suggesting 
+      that wages are lower in comparison to living expenses, which may create tighter financial conditions for residents. States like 
+      New South Wales (NSW), Victoria (VIC), and Queensland (QLD) have ratios that fall between these extremes, indicating moderate 
+      cost-of-living pressures. These differences highlight the economic diversity across Australia, where urban centers might sustain 
+      higher wages to balance living costs, while states with less robust economies may struggle to keep wages aligned with inflation. 
+      Addressing these disparities through wage growth, cost-of-living adjustments, or other economic measures is crucial for ensuring 
+      financial stability and well-being across all regions.
+    <p>
+      
     <div id="map"></div>
 
     <br><br>
@@ -43,9 +58,10 @@
           From the data, the trend of wages outpacing CPI in 2014 suggests a period where Australians were able to cope well with 
           living expenses, leading to easier cost of living. However, regional disparities indicate that not all areas 
           experienced the same benefits, as seen in 2014 where ACT droopped in wages but WA had a significant increase, reflecting 
-          the complex economic dynamics within the country. Monitoring these indicators helps in crafting policies that promote 
-          sustainable wage growth and manage inflation, ultimately aiming to enhance the 
-          standard of living for Australians across all states.
+          the complex economic dynamics within the country. Additionally, the growth of CPI has been far steeper than wage growth
+          across all states, indicating the inability of wages to keep up with the cost of living, leading to less disposable income
+          for Australians. This is why it is essential to monitor these indicators, as they help in crafting policies that promote 
+          sustainable wage growth and manage inflation, ultimately aiming to enhance the standard of living for Australians.
         </p>
       </div>
     </div>
@@ -75,7 +91,7 @@
   <script>
     const spec = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Consumer Price Index as a Proportion of Weekly Wages for States in Australia",
+    "title": "Consumer Price Index as a Proportion of Weekly Wages",
     "width": 750,
     "height": 400,
     "projection": {
