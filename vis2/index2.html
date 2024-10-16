@@ -68,11 +68,29 @@
     "title": "Weekly Wages as a Proportion of Consumer Price Index for States in Australia (Dec '23)",
     "width": 750,
     "height": 400,
-    "projection": {"type": "equirectangular"},
+    "projection": {
+      "type": "equirectangular", 
+      "fit": false, 
+      "scale": 600,  
+      "center": [133.7751, -25.2744]
+      },
     "data": {
       "url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/js/australia_states.json",
       "format": {"type": "topojson", "feature": "STE_2016_AUST"}
     },
+    "params": [
+      {
+        "name": "Proportion_selection",
+        "value": 0.085,
+        "bind": {
+          "input": "range",
+          "min": 0.06,
+          "max": 0.085,
+          "step": 0.005,
+          "name": "Proportion: "
+        }
+      }
+  ],
     "transform": [
       {
         "lookup": "properties.STE_NAME16",
@@ -84,7 +102,8 @@
           "fields": ["CPI_Number", "Population", "WeeklyWages"]
         }
       },
-      {"calculate": "datum.CPI_Number / datum.WeeklyWages", "as": "Proportion"}
+      {"calculate": "round(datum.CPI_Number / datum.WeeklyWages * 1000) / 1000", "as": "Proportion"},
+      {"filter": "datum.Proportion <= Proportion_selection"}
     ],
     "mark": {"type": "geoshape"},
     "encoding": {
@@ -97,13 +116,18 @@
           "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
         }
       },
+      "opacity": {
+        "condition": {"param": "Proportion_selection",
+        "value": 1},
+        "value": 0.6 
+      },
       "tooltip": [
         {"field": "properties.STE_NAME16", "type": "nominal", "title": "State"},
         {"field": "Proportion", "type": "quantitative"}
       ]
     },
     "config": {}
-  };
+};
     vegaEmbed("#map", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
   </script>
 
