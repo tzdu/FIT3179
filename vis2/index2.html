@@ -196,54 +196,107 @@
     "title": "Relationship Between Population, Wages and CPI",
     "data": {
       "url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/data/cpi_wage_data.csv"
-      },
-    "selection": {
-      "state_selection": {
-        "type": "multi",
-        "fields": ["State"],
-        "bind": "legend"
-      }
     },
+    "selection": {
+      "state_selection": {"type": "multi", "fields": ["State"], "bind": "legend"}
+    },
+    "params": [
+      {
+        "name": "State_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "New South Wales",
+            "Victoria",
+            "Queensland",
+            "South Australia",
+            "Western Australia",
+            "Northern Territory",
+            "Australian Capital Territory"
+          ],
+          "labels":[
+            "Show All",
+            "New South Wales",
+            "Victoria",
+            "Queensland",
+            "South Australia",
+            "Western Australia",
+            "Northern Territory",
+            "Australian Capital Territory"
+          ],
+        "name": "State Selection: "
+        }
+      }
+    ],
+    "transform": [
+    {"filter": "State_selection == null || datum.State == State_selection"}
+    ],
+  
     "mark": "circle",
     "encoding": {
       "x": {
         "field": "Population",
         "type": "quantitative",
-        "title": "Population ('000)"
+        "title": "Population ('000)",
+        "scale": {"domain": [0, 9000]}
       },
       "y": {
         "field": "CPI_Number",
         "type": "quantitative",
         "title": "CPI Index Number",
-        "scale": {
-          "domain": [132, 142]
-        }
+        "scale": {"domain": [132, 142]}
       },
       "color": {
-        "field": "State",
-        "type": "nominal"
+        "field": "State", 
+        "type": "nominal",
+        "scale": {
+          "domain": [
+            "New South Wales",
+            "Victoria",
+            "Queensland",
+            "South Australia",
+            "Western Australia",
+            "Northern Territory",
+            "Australian Capital Territory"
+          ],
+          "range": [
+            "#1f77b4",
+            "#ff7f0e",
+            "#2ca02c",
+            "#d62728",
+            "#9467bd",
+            "#8c564b",
+            "#e377c2"
+          ]
+        }
       },
       "opacity": {
         "condition": {"selection": "state_selection", "value": 0.6},
         "value": 0.2
       },
       "size": {
-      "field": "WeeklyWages",
-      "type": "quantitative",
-      "title": "Weekly Wages",
-      "scale": {
-          "domain": [1700, 2200],
-          "range": [100, 1500]
-        }
-      }, 
+        "field": "WeeklyWages",
+        "type": "quantitative",
+        "title": "Weekly Wages",
+        "scale": {"domain": [1700, 2200], "range": [100, 1500]}
+      },
       "tooltip": [
         {"field": "State", "type": "nominal"},
-        {"field": "Population", "type": "quantitative", "title": "Population ('000)"},
-        {"field": "CPI_Number", "type": "quantitative", "title": "CPI Index Number"},
+        {
+          "field": "Population",
+          "type": "quantitative",
+          "title": "Population ('000)"
+        },
+        {
+          "field": "CPI_Number",
+          "type": "quantitative",
+          "title": "CPI Index Number"
+        },
         {"field": "WeeklyWages", "type": "quantitative", "title": "Weekly Wages"}
       ]
     },
-      "config": {}
+    "config": {}
   };
       vegaEmbed("#bubble_chart", spec4, {mode: "vega-lite"}).then(console.log).catch(console.warn);
   </script>
