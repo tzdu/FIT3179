@@ -54,6 +54,8 @@
 
     </div>
     <!-- end pure grid group -->
+
+    <div id="bubble_chart"></div>
     
   </div> <!-- end page -->
 
@@ -159,6 +161,45 @@
       "config": {}
   };
       vegaEmbed("#bar_chart", spec3, { "actions": false }).then(console.log).catch(console.warn);
+  </script>
+
+      <!--  STACKED BAR CHART -->
+  <script>
+    const spec4 = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 750,
+    "height": 400,
+    "title": "COVID-19 Cases per Country (13 Oct 2020)",
+    "data": {
+      "url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/data/cpi_wage_data.csv"
+      },
+    "mark": "circle",
+    "encoding": {
+      "x": {
+        "field": "Population",
+        "type": "quantitative",
+        "title": "Confirmed Cases"
+      },
+      "y": {
+        "field": "CPI_Number",
+        "type": "quantitative"
+      },
+      "color": {
+        "field": "State",
+        "type": "nominal"
+      },
+      "size": {
+      "field": "WeeklyWages",
+      "type": "quantitative",
+      "scale": {
+          "domain": [1700, 2200],
+          "range": [100, 1500]
+        }
+      }
+    },
+      "config": {}
+  };
+      vegaEmbed("#bubble_chart", spec4, { "actions": false }).then(console.log).catch(console.warn);
   </script>
 
   
