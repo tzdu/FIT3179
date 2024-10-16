@@ -190,7 +190,7 @@
     },
     "config": {}
 };
-    vegaEmbed("#map", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+    vegaEmbed("#map", spec, { "actions": false }).then(console.log).catch(console.warn);
   </script>
 
   <!--  LINE CHART -->
@@ -281,7 +281,7 @@
     },
       "config": {}
   };
-      vegaEmbed("#line_chart", spec2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+      vegaEmbed("#line_chart", spec2, { "actions": false }).then(console.log).catch(console.warn);
   </script>
 
     <!--  LINE BAR CHART -->
@@ -502,7 +502,7 @@
     },
     "config": {}
   };
-      vegaEmbed("#bubble_chart", spec4, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+      vegaEmbed("#bubble_chart", spec4, { "actions": false }).then(console.log).catch(console.warn);
   </script>
 
   
