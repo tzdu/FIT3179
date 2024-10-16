@@ -163,13 +163,13 @@
       vegaEmbed("#bar_chart", spec3, { "actions": false }).then(console.log).catch(console.warn);
   </script>
 
-      <!--  STACKED BAR CHART -->
+      <!--  BUBBLE CHART -->
   <script>
     const spec4 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 600,
+    "width": 500,
     "height": 400,
-    "title": "COVID-19 Cases per Country (13 Oct 2020)",
+    "title": "Relationship Between Population, Wages and CPI",
     "data": {
       "url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/data/cpi_wage_data.csv"
       },
@@ -183,7 +183,10 @@
       "y": {
         "field": "CPI_Number",
         "type": "quantitative",
-        "title": "CPI Index Number"
+        "title": "CPI Index Number",
+        "scale": {
+          "domain": [132, 142]
+        }
       },
       "color": {
         "field": "State",
@@ -192,6 +195,7 @@
       "size": {
       "field": "WeeklyWages",
       "type": "quantitative",
+      "title": "Weekly Wages",
       "scale": {
           "domain": [1700, 2200],
           "range": [100, 1500]
