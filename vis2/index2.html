@@ -73,6 +73,28 @@
       "url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/js/australia_states.json",
       "format": {"type": "topojson", "feature": "STE_2016_AUST"}
     },
+    "params": [
+      {
+      "name": "proportion_selection",
+      "bind": {
+      "input": "select",
+      "options": [
+        null,
+        "0.07",
+        "0.075",
+        "0.08"
+      ],
+      "labels":[
+        "Show All",
+        "0.07",
+        "0.075",
+        "0.08"
+      ],
+      "name": "Proportion Selection: "
+    }
+  }  
+],
+
     "transform": [
       {
         "lookup": "properties.STE_NAME16",
@@ -83,6 +105,9 @@
           "key": "State",
           "fields": ["CPI_Number", "Population", "WeeklyWages"]
         }
+      },
+      {
+      "filter": "state_selection == null || datum.State == state_selection"
       },
       {"calculate": "datum.CPI_Number / datum.WeeklyWages", "as": "Proportion"}
     ],
@@ -97,6 +122,7 @@
           "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
         }
       },
+      "opacity": { "value": 0.6},
       "tooltip": [
         {"field": "properties.STE_NAME16", "type": "nominal", "title": "State"},
         {"field": "Proportion", "type": "quantitative"}
