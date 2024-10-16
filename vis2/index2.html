@@ -173,12 +173,19 @@
     "data": {
       "url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/data/cpi_wage_data.csv"
       },
+    "selection": {
+      "state_selection": {
+        "type": "multi",
+        "fields": ["State"],
+        "bind": "legend"
+      }
+    },
     "mark": "circle",
     "encoding": {
       "x": {
         "field": "Population",
         "type": "quantitative",
-        "title": "Population"
+        "title": "Population ('000)"
       },
       "y": {
         "field": "CPI_Number",
@@ -203,9 +210,9 @@
       }, 
       "tooltip": [
         {"field": "State", "type": "nominal"},
-        {"field": "Population", "type": "quantitative"},
+        {"field": "Population", "type": "quantitative", "title": "Population ('000)"},
         {"field": "CPI_Number", "type": "quantitative", "title": "CPI Index Number"},
-        {"field": "WeeklyWages", "type": "quantitative"}
+        {"field": "WeeklyWages", "type": "quantitative", "title": "Weekly Wages"}
       ]
     },
       "config": {}
