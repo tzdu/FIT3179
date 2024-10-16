@@ -135,7 +135,7 @@
   <script>
     const spec2 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Growth of CPI Index Numbers Over 10 Years",
+    "title": "CPI Index Numbers Growth Over 10 Years",
     "width": "container",
     "data": {"url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/data/line_chart.csv"},
     "mark": {
@@ -175,30 +175,8 @@
         "type": "quantitative",
         "scale": {"domain": [800, 1600]}
       },
-      "color": {
-        "field": "State", 
-        "type": "nominal",
-        "scale": {
-          "domain": [
-            "New South Wales",
-            "Victoria",
-            "Queensland",
-            "South Australia",
-            "Western Australia",
-            "Northern Territory",
-            "Australian Capital Territory"
-          ],
-          "range": [
-            "#1f77b4",
-            "#ff7f0e",
-            "#2ca02c",
-            "#d62728",
-            "#9467bd",
-            "#8c564b",
-            "#e377c2"
-          ]
-        }
-      },
+      "color": {"field": "State", "type": "nominal"}
+    },
     "config": {}
   };
       vegaEmbed("#bar_chart", spec3, { "actions": false }).then(console.log).catch(console.warn);
