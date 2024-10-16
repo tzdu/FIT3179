@@ -135,7 +135,7 @@
   <script>
     const spec2 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "CPI Index Numbers of each State Over 10 Years",
+    "title": "Growth of CPI Index Numbers Over 10 Years",
     "width": "container",
     "data": {"url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/data/line_chart.csv"},
     "mark": {
@@ -146,42 +146,79 @@
       "x": {"field": "Year"},
       "y": {"field": "Index", "type": "quantitative",
         "scale": {
-          "domain": [100, 140]
-        }},
-      "color": {"field": "State", "type": "nominal"}
-    },
+          "domain": [100, 140]}
+        },
+      "color": {
+        "field": "State", 
+        "type": "nominal",
+        "scale": {
+          "domain": [
+            "New South Wales",
+            "Victoria",
+            "Queensland",
+            "South Australia",
+            "Western Australia",
+            "Northern Territory",
+            "Australian Capital Territory"
+          ],
+          "range": [
+            "#1f77b4",
+            "#ff7f0e",
+            "#2ca02c",
+            "#d62728",
+            "#9467bd",
+            "#8c564b",
+            "#e377c2"
+          ]
+        }
+      },
       "config": {}
   };
       vegaEmbed("#line_chart", spec2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
   </script>
 
-    <!--  STACKED BAR CHART -->
+    <!--  LINE BAR CHART -->
   <script>
     const spec3 = {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Percentage Makeup of CPI for each State",
+    "title": "Weekly Wage Growth Over 10 Years",
     "width": "container",
-    "data": {"url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/data/stacked_bar_chart.csv"},
-    "mark": "bar",
+    "data": {
+      "url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/data/wage_data.csv"
+    },
+    "mark": {"type": "line", "point": true},
     "encoding": {
-      "x": {
-        "field": "State",
-        "type": "nominal",
-        "title": "State"
-      },
+      "x": {"field": "Year"},
       "y": {
-        "field": "Index Number",
-        "aggregate": "sum",
+        "field": "Wage",
         "type": "quantitative",
-        "title": "Sum of Index Numbers"
+        "scale": {"domain": [800, 1600]}
       },
       "color": {
-        "field": "Group",
+        "field": "State", 
         "type": "nominal",
-        "title": "CPI Group"
-      }
-    },
-      "config": {}
+        "scale": {
+          "domain": [
+            "New South Wales",
+            "Victoria",
+            "Queensland",
+            "South Australia",
+            "Western Australia",
+            "Northern Territory",
+            "Australian Capital Territory"
+          ],
+          "range": [
+            "#1f77b4",
+            "#ff7f0e",
+            "#2ca02c",
+            "#d62728",
+            "#9467bd",
+            "#8c564b",
+            "#e377c2"
+          ]
+        }
+      },
+    "config": {}
   };
       vegaEmbed("#bar_chart", spec3, { "actions": false }).then(console.log).catch(console.warn);
   </script>
