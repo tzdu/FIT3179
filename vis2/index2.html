@@ -35,6 +35,7 @@
     <div class="pure-g">
       <div class="pure-u-1-1">
         <h2>Heading 2</h2>
+        <p>blah blah blah bar chart line chart</p>
       </div>
     </div>
     <!-- end pure grid group -->
@@ -43,14 +44,11 @@
     <div class="pure-g">
       
       <div class="pure-u-1-2">
-        <div class="description description-left">
-          <h2>Two Charts</h2>
-          <p>blaH BLAH BLAH</p>
-        </div>
+        <div id="bar_chart" class="vis-container"></div>
       </div>
       
       <div class="pure-u-1-2">
-        <div id="bar_chart" class="vis-container"></div>
+        <div id="line_chart" class="vis-container"></div>
       </div>
 
     </div>
@@ -126,8 +124,40 @@
     },
       "config": {}
   };
-      vegaEmbed("#bar_chart", spec2, { "actions": false }).then(console.log).catch(console.warn);
+      vegaEmbed("#line_chart", spec2, { "actions": false }).then(console.log).catch(console.warn);
   </script>
+
+    <!--  STACKED BAR CHART -->
+  <script>
+    const spec3 = {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Percentage Makeup of CPI for each State",
+    "data": {"url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/data/stacked_bar_chart.csv"},
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "State",
+        "type": "nominal",
+        "title": "State"
+      },
+      "y": {
+        "field": "Index Number",
+        "aggregate": "sum",
+        "type": "quantitative",
+        "title": "Sum of Index Numbers"
+      },
+      "color": {
+        "field": "Group",
+        "type": "nominal",
+        "title": "CPI Group"
+      }
+    },
+      "config": {}
+  };
+      vegaEmbed("#bar_chart", spec3, { "actions": false }).then(console.log).catch(console.warn);
+  </script>
+
+  
     
       
 </body>
