@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- Import Vega & Vega-Lite -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+  <title>First Vega-Lite graph </title>
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+    
+</head>
+<body>
+  <h1>First Vega-Lite graph (changed)</h1>
+  <div id="map"></div>
+  <script>
+    const spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Weekly Wages as a Proportion of Consumer Price Index for States in Australia (Dec '23)",
+  "width": 800,
+  "height": 400,
+  "projection": {"type": "equirectangular"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/js/australia_states.json",
+    "format": {"type": "topojson", "feature": "STE_2016_AUST"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.STE_NAME16",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/data/cpi_wage_data.csv"
+        },
+        "key": "State",
+        "fields": ["CPI_Number", "Population", "WeeklyWages"]
+      }
+    },
+    {"calculate": "datum.WeeklyWages / datum.CPI_Number", "as": "Proportion"}
+  ],
+  "mark": {"type": "geoshape"},
+  "encoding": {
+    "color": {
+      "field": "Proportion",
+      "type": "quantitative",
+      "scale": {
+        "type": "threshold",
+        "domain": [2, 2.5, 3],
+        "range": ["#a63603", "#e6550d", "#fd8d3c", "#fdbe85"]
+      }
+    },
+    "tooltip": [
+      {"field": "properties.STE_NAME16", "type": "nominal", "title": "State"},
+      {"field": "Proportion", "type": "quantitative"}
+    ]
+  },
+  "config": {}
+};
+    vegaEmbed("#map", spec, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+
+      
+  <div id="bar_chart"></div>
+  <script>
+    const spec2 = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": { "text": "Cheapest European Cities" },
+  "width": 800,
+  "height": 400,
+  "data": {
+    "url": "https://raw.githubusercontent.com/FIT3179/Datasets/main/city_daily_cost.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": { "field": "daily_cost", "type": "quantitative" },
+    "y": { "field": "city", "type": "nominal" }
+  },
+    "config": {}
+};
+    vegaEmbed("#bar_chart", spec2, {mode: "vega-lite"}).then(console.log).catch(console.warn);
+  </script>
+    
+      
+</body>
+</html>
