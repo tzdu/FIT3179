@@ -138,6 +138,41 @@
     "title": "CPI Index Numbers Growth Over 10 Years",
     "width": "container",
     "data": {"url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/data/line_chart.csv"},
+    "selection": {
+      "state_selection": {"type": "multi", "fields": ["State"], "bind": "legend"}
+    },
+    "params": [
+      {
+        "name": "State_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "NSW",
+            "VIC",
+            "QLD",
+            "SA",
+            "WA",
+            "NT",
+            "ACT"
+          ],
+          "labels":[
+            "Show All",
+            "New South Wales",
+            "Victoria",
+            "Queensland",
+            "South Australia",
+            "Western Australia",
+            "Northern Territory",
+            "Australian Capital Territory"
+          ],
+        "name": "State Selection: "
+        }
+      }
+    ],
+    "transform": [
+    {"filter": "State_selection == null || datum.State == State_selection"}
+    ],
     "mark": {
       "type": "line",
       "point": true
@@ -174,6 +209,10 @@
             "#ff9da6"
           ]
         }
+      },
+      "opacity": {
+      "condition": {"selection": "state_selection", "value": 1},
+      "value": 0.3
       }
     },
       "config": {}
@@ -190,6 +229,41 @@
     "data": {
       "url": "https://raw.githubusercontent.com/tzdu/FIT3179/refs/heads/main/vis2/data/wage_data.csv"
     },
+    "selection": {
+      "state_selection": {"type": "multi", "fields": ["State"], "bind": "legend"}
+    },
+    "params": [
+      {
+        "name": "State_selection",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "NSW",
+            "VIC",
+            "QLD",
+            "SA",
+            "WA",
+            "NT",
+            "ACT"
+          ],
+          "labels":[
+            "Show All",
+            "New South Wales",
+            "Victoria",
+            "Queensland",
+            "South Australia",
+            "Western Australia",
+            "Northern Territory",
+            "Australian Capital Territory"
+          ],
+        "name": "State Selection: "
+        }
+      }
+    ],
+    "transform": [
+    {"filter": "State_selection == null || datum.State == State_selection"}
+    ],
     "mark": {"type": "line", "point": true},
     "encoding": {
       "x": {"field": "Year"},
@@ -223,6 +297,10 @@
             "#ff9da6"
           ]
         }
+      },
+      "opacity": {
+      "condition": {"selection": "state_selection", "value": 1},
+      "value": 0.3
       }
     },
     "config": {}
@@ -329,7 +407,7 @@
         }
       },
       "opacity": {
-        "condition": {"selection": "state_selection", "value": 0.6},
+        "condition": {"selection": "state_selection", "value": 1},
         "value": 0.2
       },
       "size": {
